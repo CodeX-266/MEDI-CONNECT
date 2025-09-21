@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/card_background"
+    android:layout_marginBottom="12dp">
+
+    <TextView
+        android:id="@+id/tvMedicineName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicine Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#222"/>
+
+    <TextView
+        android:id="@+id/tvMedicineQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity: 10"
+        android:textSize="14sp"
+        android:textColor="#555"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tvAvailability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available"
+        android:textSize="14sp"
+        android:textColor="#008000"
+        android:layout_marginTop="4dp"/>
+
+</LinearLayout>

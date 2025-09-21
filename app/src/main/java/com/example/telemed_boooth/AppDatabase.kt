@@ -1,13 +1,17 @@
 package com.example.telemed_boooth
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import android.content.Context
 
-@Database(entities = [Patient::class], version = 1)
+// Add both Patient and Medicine entities
+@Database(entities = [Patient::class, Medicine::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
+
+    // DAOs
     abstract fun patientDao(): PatientDao
+    abstract fun medicineDao(): MedicineDao
 
     companion object {
         @Volatile
