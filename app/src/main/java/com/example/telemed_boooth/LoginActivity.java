@@ -46,8 +46,9 @@ public class LoginActivity extends AppCompatActivity {
 
         // handle "Register" text click
         tvRegister.setOnClickListener(v -> {
-            Toast.makeText(LoginActivity.this, "Redirecting to Register page...", Toast.LENGTH_SHORT).show();
-            // later: startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            // open RegisterPatientActivity
+            Intent intent = new Intent(LoginActivity.this, RegisterPatientActivity.class);
+            startActivity(intent);
         });
     }
 }

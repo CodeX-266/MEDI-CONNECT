@@ -23,6 +23,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Telemedboooth">
 
+        <!-- Register Patient Activity -->
+        <activity
+            android:name=".RegisterPatientActivity"
+            android:exported="true" />
+
         <!-- LoginActivity is the launcher -->
         <activity
             android:name=".LoginActivity"
@@ -33,7 +38,7 @@
             </intent-filter>
         </activity>
 
-        <!-- HomeActivity is a normal activity -->
+        <!-- HomeActivity -->
         <activity
             android:name=".HomeActivity"
             android:exported="false" />
