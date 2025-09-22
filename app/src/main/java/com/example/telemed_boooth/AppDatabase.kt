@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-// Add both Patient and Medicine entities
-@Database(entities = [Patient::class, Medicine::class], version = 1)
+// Include both Patient and Medicine entities
+@Database(entities = [Patient::class, Medicine::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     // DAOs
@@ -17,13 +17,17 @@ abstract class AppDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: AppDatabase? = null
 
+        @JvmStatic
         fun getDatabase(context: Context): AppDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
                     "telemed_database"
-                ).build()
+                )
+                    // Prevent crashes if schema changes (will wipe old data)
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MedicineAdapter(private val medicines: List<Medicine>) :
+class MedicineAdapter(private var medicines: List<Medicine>) :
     RecyclerView.Adapter<MedicineAdapter.MedicineViewHolder>() {
 
     class MedicineViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,11 +25,17 @@ class MedicineAdapter(private val medicines: List<Medicine>) :
         val medicine = medicines[position]
         holder.tvName.text = medicine.name
         holder.tvQuantity.text = "Quantity: ${medicine.quantity}"
-        holder.tvAvailability.text = if (medicine.available) "Available" else "Not Available"
+        holder.tvAvailability.text = if (medicine.available) "Available ✅" else "Not Available ❌"
         holder.tvAvailability.setTextColor(
             if (medicine.available) 0xFF008000.toInt() else 0xFFFF0000.toInt()
         )
     }
 
     override fun getItemCount(): Int = medicines.size
+
+    // ✅ Update adapter data when LiveData changes
+    fun updateMedicines(newMedicines: List<Medicine>) {
+        medicines = newMedicines
+        notifyDataSetChanged()
+    }
 }

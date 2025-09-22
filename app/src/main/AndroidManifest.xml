@@ -8,15 +8,13 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
-    <!-- Declare telephony feature as optional -->
+    <!-- Optional Telephony feature -->
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
 
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -24,14 +22,10 @@
         android:theme="@style/Theme.Telemedboooth">
 
         <!-- Register Patient Activity -->
-        <activity
-            android:name=".RegisterPatientActivity"
-            android:exported="true" />
+        <activity android:name=".RegisterPatientActivity" android:exported="true" />
 
         <!-- LoginActivity is the launcher -->
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
+        <activity android:name=".LoginActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,10 +33,17 @@
         </activity>
 
         <!-- HomeActivity -->
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false" />
+        <activity android:name=".HomeActivity" android:exported="false" />
+
+        <!-- SMS Receiver -->
+        <receiver
+            android:name=".SmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter android:priority="999">
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
 
     </application>
-
 </manifest>
